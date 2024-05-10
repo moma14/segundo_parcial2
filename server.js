@@ -4,7 +4,11 @@ const session = require('express-session');
 const path = require('path');
 const router = require('./routes/routes');
 const passport = require('passport');
+const usuarios =require('./database/tablas/usuarios'); //aqui estan los querys para mysql
 const LocalStrategy = require('passport-local').Strategy;
+const SQLiteStorage = require('connect-sqlite3')(session);
+const conexion=require('./database/conexion');
+
 
 //aqui se configura la plantilla del pug
 app.set('view engine', 'pug');

@@ -7,6 +7,7 @@ const registrarUsuario=require('./registro-usuario');
 
 router.use('/',index);
 router.use('/login',login);
+router.use('/login',registrarUsuario);
 
 
 
