@@ -1,7 +1,8 @@
 const express = require('express');
+const usuarios=require('../database/tablas/usuarios');
 const router = express.Router();
 
-// Ruta para manejar el registro de usuarios
+// aqui se manejan las rutas para el registro de usuarios
 router.post('/', async (req, res) => {
     const { nombre, email, password, confirmPassword } = req.body;
 

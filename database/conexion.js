@@ -1,10 +1,10 @@
 const mysql = require('mysql2');
 const dotenv = require('dotenv');
 
-// Configure dotenv
+// se configura el dotenv
 dotenv.config();
 
-// Create MySQL connection pool
+// Aqui se crea la conexion en mysql
 const pool = mysql.createPool({
     host: process.env.MYSQL_HOST,
     user: process.env.MYSQL_USER,
@@ -15,5 +15,12 @@ const pool = mysql.createPool({
     connectionLimit: 10,
     queueLimit: 0
 });
+
+function getConexion(){
+    return pool.promise().getConnection();
+}
+module.exports={
+    getConexion
+};
 
 
