@@ -13,6 +13,32 @@ async function registrar(nombre, email, password){
         conexion.release();
     }
 }
+async function getUserPorNombre(nombre){
+    const conexion=await getConexion();
+    try{
+        const[results]=await conexion.query('SELECT * FROM usuarios WHERE nombre=?', [nombre]);
+        return results[0];
+    }catch (error){
+        console.error('Error al obtener el usuario por nombre:', error);
+        throw error;
+    }finally {//aqui se libera la conexion cuando finaliza
+        conexion.release();
+    }
+}
+async function getId(id) {
+    const conexion = await getConexion();
+    try {
+        const [results] = await conexion.query('SELECT * FROM usuarios WHERE id = ?', [id]);
+        return results[0];
+    } catch (error) {
+        console.error('Error al obtener usuario por ID:', error);
+        throw error;
+    } finally {
+        conexion.release(); // Liberar la conexión al finalizar
+    }
+}
 module.exports={
-    registrar
+    registrar,
+    getUserPorNombre,
+    getId
 };

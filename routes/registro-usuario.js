@@ -12,9 +12,9 @@ router.post('/', async (req, res) => {
     }
 
     try {
-        // Verificar si el usuario ya está registrado
-        const usuarioExistente = await db.obtenerUsuarioPorNombre(nombre);
-        if (usuarioExistente) {
+        // primero se verifica si el usuario esta registrado
+        const userExistent = await usuarios.getUserPorNombre(nombre);
+        if (userExistent) {
             return res.status(400).send('El usuario ya está registrado');
         }
 
@@ -22,7 +22,7 @@ router.post('/', async (req, res) => {
         const hashedPassword = await authMiddleWare.getHash(password);
 
         // Registrar el usuario en la base de datos
-        await db.registrarUsuario(nombre, email, hashedPassword);
+        await conexion.registrar(nombre, email, hashedPassword);
 
         // Usuario insertado correctamente
         res.redirect('/login');
