@@ -1,0 +1,39 @@
+include layout
+
+
+    link(rel="stylesheet", href="styles.css")
+.container
+  .row
+    h1 Conversor de texto
+  .row
+    h4(style="text-align:center") Attempts
+  .row.input-container
+    .col-xs-12
+      .styled-input.wide
+        input(type="text", required)
+        label Ingresa el texto
+      .div
+        label(for="checkbox") Cesar
+        input(type="checkbox" id="checkbox" name="checkbox")
+      .div  
+        label(for="checkbox") Hexadecimal
+        input(type="checkbox" id="checkbox" name="checkbox")
+      .div
+       label(for="checkbox") Base64
+       input(type="checkbox" id="checkbox" name="checkbox")
+      .div
+       label(for="checkbox") Sustitucion
+       input(type="checkbox" id="checkbox" name="checkbox") 
+    .col-xs-12
+      .styled-input.wide
+        textarea(required)
+        label Cifrado 
+    .col-xs-12
+      .btn-lrg.submit-btn Convertir  
+    .col-md-6.col-sm-12
+      .styled-input(style="float:right;")
+        input(type="text", required)
+        label Numero    
+      
+      
+     
