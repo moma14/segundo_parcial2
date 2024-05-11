@@ -1,17 +1,17 @@
-const userModel = require('../models/userModel');
-const { hashPass } = require('../database_connections/passwordUtils');
+const userModel = require('../models/Usuariomodel');
+const { hashPass } = require('../database/conexion');
 
 //este controlador servira para poder manejar el registro de usuarios
 const registroUsuario = async (req, res) => {
     try {
-        const { email, password } = req.body;
-        if (!email || !password) {
+        const { nombre, email, password } = req.body;
+        if (!nombre || !email || !password) {
             return res.status(400).json({ message: 'Todos los campos son obligatorios' });
         }
          // este if va a verificar si todos los campos requeridos realmente están
         const passwordHash = await hashPass(password);
         //aqui se llama a la función del modelo para registrar el usuario
-        const result = await userModel.registroUsuario(email, passwordHash);
+        const result = await userModel.registroUsuario(nombre, email, passwordHash, passwordHash);
 
         if (result) {
             return res.redirect('/login');

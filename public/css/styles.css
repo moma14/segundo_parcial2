@@ -6,15 +6,18 @@ body {
   height: 80vh;
   margin: 0;
 }
+
 p {
   text-align: center;
   color: #fff;
 }
+
 a {
   display: flex;
   justify-content: center;
   color: red;
 }
+
 nav {
   position: fixed;
   top: 0;
