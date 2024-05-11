@@ -1,25 +1,34 @@
 // Variables
-$primary-color: #444442
-$secondary-color: #444d45dc
-$highlight-color: #5e43f5
-$input-bg-color: #2d2d2d
-$input-text-color: white
-$input-label-color: #999
-$button-bg-color: #4b8cfb
-$button-hover-color: #6d44b8
-$heading-font: 'Poppins', sans-serif, 'arial'
-$body-font: 'Roboto', sans-serif, 'arial'
+$background-color: #444442
+$nav-background-color: rgba(68, 77, 69, 0.862745098)
 
-// Estilos
+// Estilos para el body
 body
-  background-color: $primary-color
+  background-color: $background-color
+  display: flex
+  justify-content: center
+  align-items: center
+  height: 80vh
   margin: 0
+p 
+  text-align: center
+  color: #fff
 
+a 
+  display: flex
+  justify-content: center
+  color: red
+
+// Estilos para el nav
 nav
+  position: fixed
+  top: 0
+  left: 0
+  width: 100%
   display: flex
   justify-content: space-between
   align-items: center
-  background-color: $secondary-color
+  background-color: $nav-background-color
   padding: 5px 0
   text-align: center
 
@@ -43,37 +52,41 @@ nav
         transition: background-color 0.3s
 
         &:hover
-          background-color: $highlight-color
+          background-color: #5e43f5
 
+// Estilos para el contenido centrado
 .centered-index-content
   max-width: 800px
   margin: 5% 10% 0 10%
 
-[class*=entypo-]:before
-  font-family: "entypo", sans-serif
-
+// Estilos para h1
 h1
-  font-family: $heading-font
+  font-family: "Poppins", sans-serif, "arial"
   font-weight: 600
   font-size: 72px
   color: white
   text-align: center
 
+// Estilos para h4
 h4
-  font-family: $body-font
+  font-family: "Roboto", sans-serif, "arial"
   font-weight: 400
   font-size: 20px
   color: #9b9b9b
   line-height: 1.5
 
-// Inputs
-input:focus ~ label, textarea:focus ~ label, input:valid ~ label, textarea:valid ~ label
+// Estilos para inputs y textarea
+input:focus ~ label,
+textarea:focus ~ label,
+input:valid ~ label,
+textarea:valid ~ label
   font-size: 0.75em
   color: #999
   top: -5px
   -webkit-transition: all 0.225s ease
   transition: all 0.225s ease
 
+// Estilos para .styled-input
 .styled-input
   float: left
   width: 293px
@@ -82,7 +95,7 @@ input:focus ~ label, textarea:focus ~ label, input:valid ~ label, textarea:valid
   border-radius: 4px
 
   label
-    color: $input-label-color
+    color: #999
     padding: 1.3rem 30px 1rem 30px
     position: absolute
     top: 10px
@@ -95,75 +108,89 @@ input:focus ~ label, textarea:focus ~ label, input:valid ~ label, textarea:valid
     width: 650px
     max-width: 100%
 
+// Estilos para input y textarea
 input, textarea
   padding: 30px
   border: 0
   width: 100%
   font-size: 1rem
-  background-color: $input-bg-color
-  color: $input-text-color
+  background-color: #2d2d2d
+  color: white
   border-radius: 4px
 
-input:focus, textarea:focus
-  outline: 0
+  &:focus
+    outline: 0
 
-input:focus ~ span, textarea:focus ~ span
-  width: 100%
-  -webkit-transition: all 0.075s ease
-  transition: all 0.075s ease
+  &:focus ~ span
+    width: 100%
+    -webkit-transition: all 0.075s ease
+    transition: all 0.075s ease
 
+// Estilos para textarea
 textarea
   width: 100%
   min-height: 15em
 
+// Estilos para .input-container
 .input-container
   width: 650px
   max-width: 100%
   margin: 20px auto 25px auto
 
+// Estilos para .div input[type="checkbox"]
+.div input[type="checkbox"]
+  float: inline-start
+
+// Estilos para .container
+.container
+  align-items: center
+  justify-content: center
+  height: 50vh
+
+// Estilos para .submit-btn
 .submit-btn
   padding: 7px 20px
   margin-top: 10px
   border-radius: 60px
   display: inline-block
-  background-color: $button-bg-color
+  background-color: #4b8cfb
   color: white
   font-size: 18px
   cursor: pointer
-  box-shadow: 0 2px 5px 0 rgba(0,0,0,0.06)  0 2px 10px 0 rgba(0,0,0,0.07)
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.06) 0 2px 10px 0 rgba(0, 0, 0, 0.07)
   -webkit-transition: all 300ms ease
   transition: all 300ms ease
 
-.submit-btn:hover
-  transform: translateY(1px)
-  box-shadow: 0 1px 1px 0 rgba(0,0,0,0.10)  0 1px 1px 0 rgba(0,0,0,0.09)
+  &:hover
+    transform: translateY(1px)
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1) 0 1px 1px 0 rgba(0, 0, 0, 0.09)
 
-.submit-btn
-  width: 30%
-  float: inline-start
-  text-align: center
-  
+  &.submit-btn
+    width: 30%
+    float: inline-start
+    text-align: center
+
+// Estilos para .styled-input en dispositivos móviles
 @media only screen and (max-width: 768px)
   .styled-input
     width: 100%
 
+// Estilos para el login
 .main
   width: 350px
   height: 500px
-  background: red
   overflow: hidden
-  background: url("https://doc-08-2c-docs.googleusercontent.com/docs/securesc/68c90smiglihng9534mvqmq1946dmis5/fo0picsp1nhiucmc0l25s29respgpr4j/1631524275000/03522360960922298374/03522360960922298374/1Sx0jhdpEpnNIydS4rnN4kHSJtU1EyWka?e=view&authuser=0&nonce=gcrocepgbb17m&user=03522360960922298374&hash=tfhgbs86ka6divo3llbvp93mg4csvb38") no-repeat center/ cover
+  background: url("https://doc-08-2c-docs.googleusercontent.com/docs/securesc/68c90smiglihng9534mvqmq1946dmis5/fo0picsp1nhiucmc0l25s29respgpr4j/1631524275000/03522360960922298374/03522360960922298374/1Sx0jhdpEpnNIydS4rnN4kHSJtU1EyWka?e=view&authuser=0&nonce=gcrocepgbb17m&user=03522360960922298374&hash=tfhgbs86ka6divo3llbvp93mg4csvb38") no-repeat center/cover
   border-radius: 10px
   box-shadow: 5px 20px 50px #000
 
-#chk
-  display: none
-
+// Estilos para el registro
 .signup
   position: relative
   width: 100%
   height: 100%
 
+// Estilos para las etiquetas dentro de .main
 .main label
   color: #fff
   font-size: 2.3em
@@ -172,8 +199,9 @@ textarea
   margin: 60px
   font-weight: bold
   cursor: pointer
-  transition: .5s ease-in-out
+  transition: 0.5s ease-in-out
 
+// Estilos para inputs dentro de .main
 .main input
   width: 60%
   height: 20px
@@ -187,6 +215,7 @@ textarea
   outline: none
   border-radius: 5px
 
+// Estilos para botones
 button
   width: 60%
   height: 40px
@@ -201,28 +230,20 @@ button
   outline: none
   border: none
   border-radius: 5px
-  transition: .2s ease-in
+  transition: 0.2s ease-in
   cursor: pointer
 
-button:hover
-  background: #6d44b8
+  &:hover
+    background: #cac1db
 
+// Estilos para el login
 .login
-  height: 460px
-  background: #eee
-  border-radius: 60% / 10%
-  transform: translateY(-180px)
-  transition: .8s ease-in-out
+  position: relative
+  width: 100%
+  height: 100%
 
+// Estilos para las etiquetas dentro de .login
 .login label
-  color: #573b8a
-  transform: scale(.6)
-
-#chk:checked ~ .login
-  transform: translateY(-500px)
-
-#chk:checked ~ .login label
-  transform: scale(1)
-
-#chk:checked ~ .signup label
-  transform: scale(.6)
+  font-size: 50px
+  color: #fafafc
+  transform: scale(0.6)

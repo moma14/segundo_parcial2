@@ -10,30 +10,31 @@ include layout
   .row.input-container
     .col-xs-12
       .styled-input.wide
-        input(type="text", required)
-        label Ingresa el texto
+       input(type="text", required)
+       label Ingresa el texto
       .div
-        label(for="checkbox") Cesar
-        input(type="checkbox" id="checkbox" name="checkbox")
+       label(for="checkbox") Cesar
+       input(type="checkbox" id="checkbox" name="checkbox")
       .div  
-        label(for="checkbox") Hexadecimal
-        input(type="checkbox" id="checkbox" name="checkbox")
+       label(for="checkbox") Hexadecimal
+       input(type="checkbox" id="checkbox" name="checkbox")
       .div
        label(for="checkbox") Base64
        input(type="checkbox" id="checkbox" name="checkbox")
       .div
        label(for="checkbox") Sustitucion
        input(type="checkbox" id="checkbox" name="checkbox") 
+    .col-md-6.col-sm-12
+      .styled-input(style="float:right;")
+       input(type="text", required)
+       label Numero      
     .col-xs-12
       .styled-input.wide
         textarea(required)
         label Cifrado 
     .col-xs-12
       .btn-lrg.submit-btn Convertir  
-    .col-md-6.col-sm-12
-      .styled-input(style="float:right;")
-        input(type="text", required)
-        label Numero    
+     
       
       
      

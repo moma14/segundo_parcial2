@@ -25,7 +25,7 @@ router.post('/', async (req, res) => {
         await conexion.registrar(nombre, email, hashedPassword);
 
         // Usuario insertado correctamente
-        res.redirect('/login');
+        res.redirect('/');
     } catch (error) {
         console.error(error.message);
         res.status(500).send('Error interno del servidor');

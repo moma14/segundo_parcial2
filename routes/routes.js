@@ -3,11 +3,11 @@ const router=express.Router();
 
 const index=require('./index');
 const login=require('./login');
-const registrarUsuario=require('./registro-usuario');
+const registro=require('./registro');
 
 router.use('/',index);
 router.use('/login',login);
-router.use('/login',registrarUsuario);
+router.use('/registro',registro);
 
 
 
