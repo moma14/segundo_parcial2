@@ -1,33 +1,38 @@
 const userModel = require('../models/Usuariomodel');
-const { hashPass } = require('../database/conexion');
+const { hashPassword } = require('../database/tablas/usuarios');
 
-//este controlador servira para poder manejar el registro de usuarios
+// Controlador para el registro de usuarios
 const registroUsuario = async (req, res) => {
     try {
         const { nombre, email, password } = req.body;
+        console.log('Datos del usuario:', nombre, email, password); // Verifica los datos del usuario
+
         if (!nombre || !email || !password) {
             return res.status(400).json({ message: 'Todos los campos son obligatorios' });
         }
-         // este if va a verificar si todos los campos requeridos realmente están
-        const passwordHash = await hashPass(password);
-        //aqui se llama a la función del modelo para registrar el usuario
-        const result = await userModel.registroUsuario(nombre, email, passwordHash, passwordHash);
+
+        // Hash de la contraseña
+        const passwordHash = await hashPassword(password);
+        console.log('Contraseña hasheada:', passwordHash); // Verifica la contraseña hasheada
+
+        // Llama a la función del modelo para registrar el usuario
+        const result = await userModel.registrarUsuario(nombre, email, passwordHash);
+        console.log('Resultado del registro:', result); // Verifica el resultado del registro
 
         if (result) {
             return res.redirect('/login');
         } else {
-             req.session.error = 'Ya hay un usuario registrado con ese email';
-             return res.redirect('/registro');
+            req.session.error = 'Ya hay un usuario registrado con ese email';
+            return res.redirect('/registro');
         }
-        //aqui hay dos posibilidades si el usuario se registra correctamente lo redirige al login
-        // de lo contrario le tira un error
     } catch (error) {
         console.error('Error al registrar usuario:', error);
         req.session.error = 'Error interno del servidor';
         return res.redirect('/registro');
     }
 };
-// este controlador va a servir pero para el registro del usuario
+
+// Controlador para mostrar el formulario de registro
 const getForm = (req, res) => {
     try {
         const error = req.session.error;

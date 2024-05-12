@@ -9,8 +9,12 @@ html
       ul
         li
           a(href='/') Inicio
-        li 
-          a(href='/login') Iniciar sesion 
+        if isAuthenticated
+          li 
+            a(href='/logout') Cerrar sesión
+        else
+          li 
+            a(href='/login') Iniciar sesión
   
     .container
       block content

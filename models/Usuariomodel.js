@@ -1,14 +1,12 @@
-const registroUsuario = require('../database/conexion');
+const { registroUser } = require('../database/tablas/usuarios');
 
-const registroUser = async (nombre, email, passwordHash, passwordHash ) => {
-    
-    // aqui se llama la funcion para registrar al usuario en la bd
+const registrarUsuario = async (nombre, email, passwordHash) => {
     try {
-        const result = await registroUsuario.registroUser(nombre, email, passwordHash, passwordHash);
+        const result = await registroUser(nombre, email, passwordHash);
         return result;
     } catch (error) {
         throw error;
     }
 };
 
-module.exports = { registroUser };
+module.exports = { registrarUsuario };
