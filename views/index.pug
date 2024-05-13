@@ -1,40 +1,58 @@
-include layout
+extends layout
 
+block content
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Cifrador
+  body
+    h1 Cifrador
+    form(action="/cifrador-texto", method="post") 
+    textarea#textoInput(placeholder="Ingresa el texto")
+    
+    
+    label(for="desplazamiento", id="labelDesplazamiento", style="display: none;") Desplazamiento César:
+    input#desplazamiento(type="number", min="1", value="3", style="display: none;")
+    
+    
+    label(for="clave", id="labelClave", style="display: none;") Clave de Sustitución:
+    input#clave(type="text", placeholder="Escribe la clave de sustitución", style="display: none;")
+    
+    button(type="submit") Cifrar
+    
+    
+    select#metodo
+      option(value="cesar") Cifrado César
+      option(value="sustitucion") Cifrado por Sustitución
+      option(value="hexadecimal") Cifrado Hexadecimal
+      option(value="base64") Cifrado Base64
+    
+    br
+    textarea#resultado(readonly)
 
-    link(rel="stylesheet", href="styles.css")
-.container
-  .row
-    h1 Conversor de texto
-  .row
-    h4(style="text-align:center") Attempts
-  .row.input-container
-    .col-xs-12
-      .styled-input.wide
-       input(type="text", required)
-       label Ingresa el texto
-      .div
-       label(for="checkbox") Cesar
-       input(type="checkbox" id="checkbox" name="checkbox")
-      .div  
-       label(for="checkbox") Hexadecimal
-       input(type="checkbox" id="checkbox" name="checkbox")
-      .div
-       label(for="checkbox") Base64
-       input(type="checkbox" id="checkbox" name="checkbox")
-      .div
-       label(for="checkbox") Sustitucion
-       input(type="checkbox" id="checkbox" name="checkbox") 
-    .col-md-6.col-sm-12
-      .styled-input(style="float:right;")
-       input(type="text", required)
-       label Numero      
-    .col-xs-12
-      .styled-input.wide
-        textarea(required)
-        label Cifrado 
-    .col-xs-12
-      .btn-lrg.submit-btn Convertir  
-     
-      
-      
-     
+  script.
+    // Función para mostrar u ocultar los campos de entrada según el método de cifrado seleccionado
+   document.getElementById('metodo').addEventListener('change', function() {
+      var desplazamiento = document.getElementById('desplazamiento');
+      var labelDesplazamiento = document.getElementById('labelDesplazamiento');
+      var clave = document.getElementById('clave');
+      var labelClave = document.getElementById('labelClave');
+
+      if (this.value === 'cesar') {
+       desplazamiento.style.display = 'block';
+       labelDesplazamiento.style.display = 'block';
+       clave.style.display = 'none';
+       labelClave.style.display = 'none';
+    } else if (this.value === 'sustitucion') {
+        desplazamiento.style.display = 'none';
+        labelDesplazamiento.style.display = 'none';
+        clave.style.display = 'block';
+        labelClave.style.display = 'block';
+    } else {
+        desplazamiento.style.display = 'none';
+        labelDesplazamiento.style.display = 'none';
+        clave.style.display = 'none';
+        labelClave.style.display = 'none';
+    }
+    });
+

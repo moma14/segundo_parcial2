@@ -7,6 +7,11 @@ const passport = require('passport');
 const usuarios = require('./database/tablas/usuarios');
 const LocalStrategy = require('passport-local').Strategy;
 const conexion = require('./database/conexion');
+const cookieParser=require('cookie-parser');
+const flash=require('connect-flash');
+
+app.use(cookieParser());
+app.use(flash());
 
 // Configuración de express-session
 app.use(session({
@@ -42,6 +47,8 @@ passport.deserializeUser(function (id, done) {
 // Middleware de passport
 app.use(passport.initialize());
 app.use(passport.session());
+
+
 
 // Middleware para establecer isAuthenticated en las vistas
 app.use(function(req, res, next) {
