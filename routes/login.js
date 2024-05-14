@@ -8,28 +8,25 @@ router.get('/', (req, res) => {
 
 router.post('/', async (req, res) => {
     const { email, password } = req.body;
-
+//primero busca a los usuarios en la bd
     try {
-        // Buscar al usuario en la base de datos por su correo electrónico
         const user = await userModel.getUserPorEmail(email);
-
+ // Si no se encuentra el usuario, mostrar mensaje de error
         if (!user) {
-            // Si no se encuentra el usuario, mostrar mensaje de error
             return res.render('login', { title: 'Iniciar sesión', error: 'Credenciales incorrectas' });
         }
 
-        // Verificar si la contraseña proporcionada coincide con la contraseña almacenada
+        // aqui se Verifica si la contraseña proporcionada coincide con la contraseña almacenada
         const passwordMatch = await userModel.comparePassword(password, user.password_hash);
 
+        // Si la contraseña no coincide, se muestra un mensaje de error
         if (!passwordMatch) {
-            // Si la contraseña no coincide, mostrar mensaje de error
             return res.render('login', { title: 'Iniciar sesión', error: 'Credenciales incorrectas' });
         }
 
-        // Si las credenciales son válidas, establecer una sesión para el usuario
         req.session.userId = user.id;
 
-        // Redirigir al usuario a la página  principal
+        // se redirige al usuario a la página  principal
         res.redirect('/');
     } catch (error) {
         console.error('Error al iniciar sesión:', error);

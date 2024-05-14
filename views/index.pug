@@ -16,22 +16,24 @@ block content
     
     
     label(for="clave", id="labelClave", style="display: none;") Clave de Sustitución:
-    input#clave(type="text", placeholder="Escribe la clave de sustitución", style="display: none;")
+    input#clave(name="keyCipher", type="text", placeholder="Escribe la clave de sustitución", style="display: none;")
     
     button(type="submit") Cifrar
     
     
     select#metodo
-      option(value="cesar") Cifrado César
+      option(value="base64")  Cifrado Base64
       option(value="sustitucion") Cifrado por Sustitución
       option(value="hexadecimal") Cifrado Hexadecimal
-      option(value="base64") Cifrado Base64
+      option(value="cesar") Cifrado Cesar
     
     br
+
+    form(action="/cifrador-hecho", method="post") 
     textarea#resultado(readonly)
 
   script.
-    // Función para mostrar u ocultar los campos de entrada según el método de cifrado seleccionado
+    // esta es la funcion para mostrar u ocultar los campos de entrada según el método de cifrado seleccionado
    document.getElementById('metodo').addEventListener('change', function() {
       var desplazamiento = document.getElementById('desplazamiento');
       var labelDesplazamiento = document.getElementById('labelDesplazamiento');

@@ -1,0 +1,29 @@
+extends layout 
+block content 
+ body
+    h1 Cifrador
+    form(action="/cifrador-texto", method="post") 
+    textarea#textoInput(placeholder="Ingresa el texto")
+    
+    
+    label(for="desplazamiento", id="labelDesplazamiento", style="display: none;") Desplazamiento César:
+    input#desplazamiento(type="number", min="1", value="3", style="display: none;")
+    
+    
+    label(for="clave", id="labelClave", style="display: none;") Clave de Sustitución:
+    input#clave(type="text", placeholder="Escribe la clave de sustitución", style="display: none;")
+    
+    button(type="submit") Cifrar
+    
+    
+    select(name="opcion", id="opcion")
+      option(value="cesar") Cifrado César
+      option(value="sustitucion") Cifrado por Sustitución
+      option(value="hexadecimal") Cifrado Hexadecimal
+      option(value="base64") Cifrado Base64
+    
+    br
+    textarea#resultado(readonly)
+
+
+

@@ -2,8 +2,8 @@ const express= require("express")
 const router=  express.Router();
 
 app.post('/resultado', (req, res) => {
-    const { texto } = req.body;
-    const encryptedText = cipherModel.base64Cipher(texto);
+    const { texto, clave } = req.body;
+    const encryptedText = cipherModel.substitutionCipher(texto, clave);
     res.render({ encryptedText });
 });
 
